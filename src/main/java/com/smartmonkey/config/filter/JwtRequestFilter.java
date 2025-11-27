@@ -18,6 +18,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 
         // TODO 这里去拦截请求并校验即可
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken("testuser", null, null);
+        // 这里非常重要，需要把认证之后的信息设置到上下文中
         SecurityContextHolder.getContext().setAuthentication(authenticationToken);
         // 获取对应的token信息并解密
         filterChain.doFilter(request, response);

@@ -2,3 +2,15 @@ server:
   port: 8080
   servlet:
     context-path: /smart-monkey
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/testdb?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: password
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+#  type-aliases-package: com.smartmonkey.entity
+  configuration:
+    map-underscore-to-camel-case: true
