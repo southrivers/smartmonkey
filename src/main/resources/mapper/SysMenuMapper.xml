@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.smartmonkey.mapper.SysMenuMapper">
+
+    <select id="getMenuList" resultType="com.smartmonkey.model.SysMenu">
+        SELECT * FROM sys_menu
+    </select>
+    <update id="updateSysMenu" parameterType="com.smartmonkey.model.SysMenu">
+        UPDATE sys_menu
+        SET
+            parent_id = #{parentId},
+            menu_name = #{menuName},
+            icon = #{icon},
+            path = #{path},
+            menu_type = #{menuType},
+            perms = #{perms},
+            update_by = #{updateBy},
+            update_time = NOW()
+        WHERE menu_id = #{menuId}
+    </update>
+    <insert id="insertSysMenu" parameterType="com.smartmonkey.model.SysMenu" useGeneratedKeys="true" keyProperty="menuId">
+        INSERT INTO sys_menu
+        (parent_id, menu_name, icon, path, menu_type, perms, create_by, create_time, update_by, update_time)
+        VALUES
+            (#{parentId}, #{menuName}, #{icon}, #{path}, #{menuType}, #{perms}, #{createBy}, NOW(), #{updateBy}, NOW())
+    </insert>
+    <delete id="deleteSysMenuById" parameterType="java.lang.Long">
+        DELETE FROM sys_menu
+        WHERE menu_id = #{menuId}
+    </delete>
+
+</mapper>

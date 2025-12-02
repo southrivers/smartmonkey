@@ -23,12 +23,13 @@ public class SecurityConfig {
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authz -> authz
-                        // 这种写法才是匹配任意路径
-                        .requestMatchers("/monkey/**")
-                        // TODO 这里如何让其他的请求进行认证呢？
-                        .permitAll()
-                        // 这里是控制所有的请求都要认证
-                        .anyRequest().authenticated()
+                                // 这种写法才是匹配任意路径
+                                .requestMatchers("/**")
+//                        .requestMatchers("/monkey/**")
+                                // TODO 这里如何让其他的请求进行认证呢？
+                                .permitAll()
+                                // 这里是控制所有的请求都要认证
+                                .anyRequest().authenticated()
                 );
         // 使用自定义的jwtfilter
         httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
