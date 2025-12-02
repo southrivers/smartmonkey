@@ -6,7 +6,7 @@
 <generatorConfiguration>
 
 
-    <context id="MySQLTables" targetRuntime="MyBatis3">
+    <context id="MySQLTables" targetRuntime="MyBatis3Simple">
         <!-- 生成注释 -->
         <commentGenerator>
             <property name="suppressDate" value="true"/>
@@ -42,12 +42,20 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
-        <!-- 指定表 -->
         <table tableName="stock_in" domainObjectName="StockIn">
-<!--            <generatedKey column="part_id" sqlStatement="MySql" identity="true"/>-->
+            <!--            <generatedKey column="part_id" sqlStatement="MySql" identity="true"/>-->
         </table>
         <table tableName="stock_out" domainObjectName="StockOut">
             <!--            <generatedKey column="part_id" sqlStatement="MySql" identity="true"/>-->
+        </table>
+        <table tableName="inventory" domainObjectName="Inventory">
+            <!--            <generatedKey column="part_id" sqlStatement="MySql" identity="true"/>-->
+        </table>
+        <table tableName="part_category" domainObjectName="PartCategory">
+            <!--            <generatedKey column="part_id" sqlStatement="MySql" identity="true"/>-->
+        </table>
+        <table tableName="spare_parts" domainObjectName="SparePart">
+            <generatedKey column="part_id" sqlStatement="MySql" identity="true"/>
         </table>
     </context>
 </generatorConfiguration>
